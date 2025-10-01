@@ -28,7 +28,7 @@ The chosen design centers on using an Application Load Balancer (ALB) for the pu
 |-----------|--------------------|-----------|
 | API Backend | Go/Python Service | Receives the customer's domain request, acts as the system's entry point. |
 | Infrastructure as Code (IaC) | Terraform | Automates the creation and modification of cloud resources (DNS records, Load Balancers, Target Groups, etc.). Ensures an auditable and repeatable process. |
-| Certificate Management | AWS Certificate Manager (ACM), Google Load Balancer/Cloud Run, or cert-manager (Kubernetes) | Cloud-native services simplify and accelerate the Let's Encrypt (or similar) process, especially with DNS validation which is the fastest method. ACM is preferred in AWS for its automatic renewal and integration. |
+| Certificate Management | AWS Certificate Manager (ACM), Google Load Balancer/Cloud Run| Cloud-native services simplify and accelerate the Let's Encrypt (or similar) process, especially with DNS validation which is the fastest method. ACM is preferred in AWS for its automatic renewal and integration. |
 | Reverse Proxy/Ingress | Cloud Load Balancer (e.g., AWS ALB) | Terminates SSL/TLS traffic, inspects the Server Name Indication (SNI) header, and routes the request to the correct backend service/pod, ensuring multi-tenancy. |
 | State Machine/Workflow | simple Message Queue (SQS/Redis) | Orchestrates the multi-step provisioning process (Trigger → IaC → Cert Request → Deployment). |
 
